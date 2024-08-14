@@ -1,0 +1,22 @@
+prueba:
+  test: ${password}
+spring:
+  application.name: foodcourt
+  cloud:
+    aws:
+      region:
+        static: us-east-1  # Cambia por la región de tu AWS
+      secretsmanager:
+        enabled: true      # Habilita el uso de Secrets Manager
+        name: prod/secrets/database-secrets
+  datasource:
+    driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerPostgreSQLDriver
+    url: jdbc-secretsmanager:postgresql://aurora-cluster.cluster-cvqmky64qvkb.us-east-1.rds.amazonaws.com:5432/foods?useSSL=false&useTimezone=true&serverTimezone=UTC
+    username: prod/secrets/database-secrets
+  jpa:
+    hibernate:
+      ddl-auto: update
+      generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
