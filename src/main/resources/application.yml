@@ -10,6 +10,7 @@ spring:
         enabled: true      # Habilita el uso de Secrets Manager
         name: prod/secrets/database-secrets
   datasource:
+    schema: foods_scheme
     driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerPostgreSQLDriver
     url: jdbc-secretsmanager:postgresql://${RDS_HOST}:5432/foods?useSSL=false&useTimezone=true&serverTimezone=UTC
     username: prod/secrets/database-secrets
