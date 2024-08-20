@@ -12,7 +12,7 @@ spring:
   datasource:
     schema: foods_scheme
     driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerPostgreSQLDriver
-    url: jdbc-secretsmanager:postgresql://${RDS_HOST}:5432/foods?useSSL=false&useTimezone=true&serverTimezone=UTC
+    url: jdbc-secretsmanager:postgresql://${RDS_HOST}:5432/foods?useSSL=false&useTimezone=true&serverTimezone=UTC&currentSchema=foods_scheme
     username: prod/secrets/database-secrets
   jpa:
     hibernate:
